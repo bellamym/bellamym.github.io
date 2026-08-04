@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,125 +7,95 @@
 <meta name="description" content="Peer-reviewed publications, working papers, and book chapters by Marcus A. Bellamy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300..700;1,300..700&family=Inter:wght@300..600&display=swap" rel="stylesheet">
-<style>
-:root,[data-theme="light"]{--bg:#f7f6f2;--surface:#fff;--border:#e0ded8;--text:#1a1917;--muted:#6b6966;--faint:#b0aea9;--accent:#01696f;--accent-h:#0c4e54;--sm:0.875rem;--xs:0.78rem}
-[data-theme="dark"]{--bg:#141412;--surface:#1c1b19;--border:#2e2d2a;--text:#d0ceca;--muted:#7a7876;--faint:#4a4946;--accent:#4f98a3;--accent-h:#227f8b}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:'Inter',sans-serif;font-size:1rem;line-height:1.65;color:var(--text);background:var(--bg);min-height:100dvh}
-a{color:var(--accent);text-decoration:none;transition:color .18s}
-a:hover{color:var(--accent-h)}
-
-/* NAV */
-nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.nav-name{font-family:'Crimson Pro',serif;font-size:1.15rem;font-weight:500;color:var(--text);white-space:nowrap}
-.nav-links{display:flex;gap:1.6rem;list-style:none;flex-wrap:wrap}
-.nav-links a{font-size:var(--sm);color:var(--muted);font-weight:400;letter-spacing:.01em}
-.nav-links a:hover,.nav-links a.active{color:var(--accent)}
-.tgl{background:none;border:1px solid var(--border);border-radius:6px;padding:.3rem .55rem;cursor:pointer;color:var(--muted);font-size:.8rem;transition:all .18s}
-.tgl:hover{border-color:var(--accent);color:var(--accent)}
-
-/* LAYOUT */
-.wrap{max-width:820px;margin:0 auto;padding:0 2rem}
-.pgh{padding:3.5rem 0 1.5rem}
-h1{font-family:'Crimson Pro',serif;font-size:2.4rem;font-weight:400;line-height:1.15;margin-bottom:.75rem}
-.sub{color:var(--muted);font-size:var(--sm);max-width:62ch}
-.sec{padding:2.5rem 0;border-top:1px solid var(--border)}
-.sl{display:inline-block;font-size:var(--xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:1.4rem}
-
-/* PUBLICATIONS */
-.pbl{display:flex;flex-direction:column;gap:1.4rem}
-.pi{padding-left:3.2rem;position:relative;font-size:var(--sm);line-height:1.6}
-.yr{position:absolute;left:0;top:0;font-size:var(--xs);color:var(--faint);font-variant-numeric:tabular-nums;padding-top:.15rem}
-.pi strong{display:block;color:var(--text);font-weight:500;margin-bottom:.15rem}
-.pi em{color:var(--muted)}
-.aw{display:block;font-size:var(--xs);color:var(--accent);margin-top:.3rem}
-
-/* RESEARCH AREAS */
-.g3{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem;margin-top:.5rem}
-.cd{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.4rem}
-.tg{font-size:var(--sm);font-weight:600;color:var(--text)}
-
-footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:var(--xs);color:var(--faint);margin-top:3rem}
-
-@media(max-width:600px){nav{padding:.8rem 1rem}.wrap{padding:0 1rem}h1{font-size:1.8rem}.nav-links{gap:1rem}}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css"/>
+<script>(function(){var t;try{t=localStorage.getItem('mb-theme')}catch(e){}document.documentElement.setAttribute('data-theme',t||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))})();</script>
 </head>
 <body>
-<nav>
-  <a class="nav-name" href="index.html">Marcus A. Bellamy</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="research.html" class="active">Research</a></li>
-    <li><a href="teaching.html">Teaching</a></li>
-    <li><a href="cv.html">CV</a></li>
-  </ul>
-  <button class="tgl" data-theme-toggle aria-label="Toggle dark mode">◐</button>
-</nav>
-<script>(function(){const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';r.setAttribute('data-theme',d);t&&t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d)})})()</script>
+<header class="sh">
+  <div class="wrapn nw">
+    <a class="br" href="index.html">
+      <span class="bi"><img src="assets/headshot.jpg" alt="" width="42" height="42"/></span>
+      <span>Marcus A. Bellamy</span>
+    </a>
+    <nav aria-label="Primary"><ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html" class="nav-on">Research</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="cv.html">CV</a></li>
+    </ul></nav>
+    <button class="tt" type="button" data-theme-toggle aria-label="Toggle theme"></button>
+  </div>
+</header>
+<main>
 
-<div class="pgh wrap">
+<div class="pgh wrapn">
   <h1>Research</h1>
-  <p class="sub">My scholarship examines supply network structure, environmental sustainability, platform economics, and the role of data visualization in operations management.</p>
+  <p>My scholarship examines supply network structure, environmental sustainability, platform economics, and the role of data visualization in operations management.</p>
 </div>
 
-<section class="sec"><div class="wrap">
-<span class="sl">Working Papers</span>
-<div class="pbl">
+<section class="sec"><div class="wrapn">
+<h2 class="sl">Working Papers</h2>
+<div class="pl">
   <div class="pi"><span class="yr">2025</span><strong>Beyond the Fence Line: Enforcement Spillovers Across Facility Networks</strong></div>
-  <div class="pi"><span class="yr">2025</span><strong>AI Disclosure and Usage in Product Development</strong><br/>with Linghui Feng</div>
-  <div class="pi"><span class="yr">2025</span><strong>Promotional Paths and Sales Response in the Food &amp; Beverage Industry</strong><br/>with Yuze Li and Nuo Yuan</div>
-  <div class="pi"><span class="yr">2025</span><strong>Adventuring to Peak Price or Avoiding the Chase? Relocation Biases on a Ride-sharing Platform</strong><br/>with Kyungmin (Brad) Lee and Nitin Joglekar</div>
-  <div class="pi"><span class="yr">2025</span><strong>Competing with Supply Networks: Industry Stratification</strong><br/>with Soumen Ghosh and Manpreet Hora</div>
+  <div class="pi"><span class="yr">2025</span><strong>AI Disclosure and Usage in Product Development</strong>with Linghui Feng</div>
+  <div class="pi"><span class="yr">2025</span><strong>Promotional Paths and Sales Response in the Food &amp; Beverage Industry</strong>with Yuze Li and Nuo Yuan</div>
+  <div class="pi"><span class="yr">2025</span><strong>Adventuring to Peak Price or Avoiding the Chase? Relocation Biases on a Ride-sharing Platform</strong>with Kyungmin (Brad) Lee and Nitin Joglekar</div>
+  <div class="pi"><span class="yr">2025</span><strong>Competing with Supply Networks: Industry Stratification</strong>with Soumen Ghosh and Manpreet Hora</div>
 </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
-<span class="sl">Papers Under Review</span>
-<div class="pbl">
-  <div class="pi"><span class="yr">2025</span><strong>Board Female Representation and Corporate Social Performance: A Mixed-Method Approach</strong><br/>Yuan, N. and M.A. Bellamy — <em>Under review</em></div>
-  <div class="pi"><span class="yr">2025</span><strong>Relationship Strength, Supply Network Structure, and Firm Performance: An Empirical Investigation</strong><br/>Bellamy, M.A., Ghosh, S., and M. Hora — <em>In preparation</em></div>
-  <div class="pi"><span class="yr">2025</span><strong>Strategic Partner Differences and Shifts in Environmental Performance</strong><br/>McKie, E.C., Bellamy, M.A., and E. Bendoly — <em>Under review</em></div>
+<section class="sec"><div class="wrapn">
+<h2 class="sl">Papers Under Review</h2>
+<div class="pl">
+  <div class="pi"><span class="yr">2025</span><strong>Board Female Representation and Corporate Social Performance: A Mixed-Method Approach</strong>Yuan, N. and M.A. Bellamy — <em>Under review</em></div>
+  <div class="pi"><span class="yr">2025</span><strong>Relationship Strength, Supply Network Structure, and Firm Performance: An Empirical Investigation</strong>Bellamy, M.A., Ghosh, S., and M. Hora — <em>In preparation</em></div>
+  <div class="pi"><span class="yr">2025</span><strong>Strategic Partner Differences and Shifts in Environmental Performance</strong>McKie, E.C., Bellamy, M.A., and E. Bendoly — <em>Under review</em></div>
 </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
-<span class="sl">Peer-Reviewed Journal Articles</span>
-<div class="pbl">
-  <div class="pi"><span class="yr">2025</span><strong>Environmental Performance, Strategic Partners and Backsliding</strong><br/>McKie, E.C., Bellamy, M.A., and E. Bendoly — <em>Journal of Business Logistics</em>, 46(4), e70035</div>
-  <div class="pi"><span class="yr">2022</span><strong>Distributed Service with Proximal Capacity and Pricing on a Two-sided Sharing Economy Platform</strong><br/>Lee, K., Bellamy, M.A., and N. Joglekar — <em>Journal of Operations Management</em>, 69(5), 742–763<span class="aw">★ 2024 Jack Meredith Best Paper Award (Finalist)</span></div>
-  <div class="pi"><span class="yr">2020</span><strong>Administrative Environmental Innovations, Supply Network Structure, and Environmental Disclosure</strong><br/>Bellamy, M.A., Dhanorkar, S., and R. Subramanian — <em>Journal of Operations Management</em>, 66(7–8), 895–932<span class="aw">★ 2019 AOM OSCM Division Best Paper in Supply Chains (Winner)</span></div>
-  <div class="pi"><span class="yr">2018</span><strong>Structural Anatomy and Evolution of Supply Chain Alliance Networks: A Multi-Method Approach</strong><br/>Park, H., Bellamy, M.A., and R.C. Basole — <em>Journal of Operations Management</em>, 63(1), 79–96</div>
-  <div class="pi"><span class="yr">2017</span><strong>Visualization of Innovation in Global Supply Chain Networks</strong><br/>Basole, R.C., Bellamy, M.A., and H. Park — <em>Decision Sciences</em>, 48(2), 288–306</div>
-  <div class="pi"><span class="yr">2016</span><strong>Visual Analytics for Supply Network Management: System Design and Evaluation</strong><br/>Park, H., Bellamy, M.A., and R.C. Basole — <em>Decision Support Systems</em>, 91, 89–102</div>
-  <div class="pi"><span class="yr">2016</span><strong>Computational Analysis and Visualization of Global Supply Network Risks</strong><br/>Basole, R.C., Bellamy, M.A., Park, H., and J. Putrevu — <em>IEEE Transactions on Industrial Informatics</em>, 12(3), 1206–1213</div>
-  <div class="pi"><span class="yr">2014</span><strong>The Influence of Supply Network Structure on Firm Innovation</strong><br/>Bellamy, M.A., Ghosh, S., and M. Hora — <em>Journal of Operations Management</em>, 32(6), 357–373<span class="aw">★ 2013 AOM OM Division Best Student Paper (Winner)</span><span class="aw">★ 2013 DSI &amp; Asia Pacific DSI Best Paper in Application of Theory (Winner)</span></div>
-  <div class="pi"><span class="yr">2014</span><strong>Supply Network Structure, Visibility, and Risk Diffusion: A Computational Approach</strong><br/>Basole, R.C. and M.A. Bellamy — <em>Decision Sciences</em>, 45(4), 753–789</div>
-  <div class="pi"><span class="yr">2014</span><strong>Visual Analysis of Supply Network Risks: Insights from the Electronics Industry</strong><br/>Basole, R.C. and M.A. Bellamy — <em>Decision Support Systems</em>, 67, 109–120</div>
-  <div class="pi"><span class="yr">2013</span><strong>Network Analysis of Supply Chain Systems: A Systematic Review and Future Research</strong><br/>Bellamy, M.A. and R.C. Basole — <em>Systems Engineering</em>, 16(2), 235–249</div>
-  <div class="pi"><span class="yr">2013</span><strong>Challenges and Opportunities for Enterprise Transformation Research</strong><br/>Basole, R.C., Bellamy, M., Clear, T., Dabkowski, M., Monreal, J., Park, H., Valerdi, R. and Van Aken, E. — <em>Journal of Enterprise Transformation</em>, 3(4), 330–352</div>
-  <div class="pi"><span class="yr">2012</span><strong>Global Supply Network Health: Analysis and Visualization</strong><br/>Basole, R.C. and M.A. Bellamy — <em>Information Knowledge Systems Management</em>, 11(1–2), 59–76</div>
+<section class="sec"><div class="wrapn">
+<h2 class="sl">Peer-Reviewed Journal Articles</h2>
+<div class="pl">
+  <div class="pi"><span class="yr">2025</span><strong>Environmental Performance, Strategic Partners and Backsliding</strong>McKie, E.C., Bellamy, M.A., and E. Bendoly — <em>Journal of Business Logistics</em>, 46(4), e70035</div>
+  <div class="pi"><span class="yr">2022</span><strong>Distributed Service with Proximal Capacity and Pricing on a Two-sided Sharing Economy Platform</strong>Lee, K., Bellamy, M.A., and N. Joglekar — <em>Journal of Operations Management</em>, 69(5), 742–763<span class="aw">★ 2024 Jack Meredith Best Paper Award (Finalist)</span></div>
+  <div class="pi"><span class="yr">2020</span><strong>Administrative Environmental Innovations, Supply Network Structure, and Environmental Disclosure</strong>Bellamy, M.A., Dhanorkar, S., and R. Subramanian — <em>Journal of Operations Management</em>, 66(7–8), 895–932<span class="aw">★ 2019 AOM OSCM Division Best Paper in Supply Chains (Winner)</span></div>
+  <div class="pi"><span class="yr">2018</span><strong>Structural Anatomy and Evolution of Supply Chain Alliance Networks: A Multi-Method Approach</strong>Park, H., Bellamy, M.A., and R.C. Basole — <em>Journal of Operations Management</em>, 63(1), 79–96</div>
+  <div class="pi"><span class="yr">2017</span><strong>Visualization of Innovation in Global Supply Chain Networks</strong>Basole, R.C., Bellamy, M.A., and H. Park — <em>Decision Sciences</em>, 48(2), 288–306</div>
+  <div class="pi"><span class="yr">2016</span><strong>Visual Analytics for Supply Network Management: System Design and Evaluation</strong>Park, H., Bellamy, M.A., and R.C. Basole — <em>Decision Support Systems</em>, 91, 89–102</div>
+  <div class="pi"><span class="yr">2016</span><strong>Computational Analysis and Visualization of Global Supply Network Risks</strong>Basole, R.C., Bellamy, M.A., Park, H., and J. Putrevu — <em>IEEE Transactions on Industrial Informatics</em>, 12(3), 1206–1213</div>
+  <div class="pi"><span class="yr">2014</span><strong>The Influence of Supply Network Structure on Firm Innovation</strong>Bellamy, M.A., Ghosh, S., and M. Hora — <em>Journal of Operations Management</em>, 32(6), 357–373<span class="aw">★ 2013 AOM OM Division Best Student Paper (Winner)</span><span class="aw">★ 2013 DSI &amp; Asia Pacific DSI Best Paper in Application of Theory (Winner)</span></div>
+  <div class="pi"><span class="yr">2014</span><strong>Supply Network Structure, Visibility, and Risk Diffusion: A Computational Approach</strong>Basole, R.C. and M.A. Bellamy — <em>Decision Sciences</em>, 45(4), 753–789</div>
+  <div class="pi"><span class="yr">2014</span><strong>Visual Analysis of Supply Network Risks: Insights from the Electronics Industry</strong>Basole, R.C. and M.A. Bellamy — <em>Decision Support Systems</em>, 67, 109–120</div>
+  <div class="pi"><span class="yr">2013</span><strong>Network Analysis of Supply Chain Systems: A Systematic Review and Future Research</strong>Bellamy, M.A. and R.C. Basole — <em>Systems Engineering</em>, 16(2), 235–249</div>
+  <div class="pi"><span class="yr">2013</span><strong>Challenges and Opportunities for Enterprise Transformation Research</strong>Basole, R.C., Bellamy, M., Clear, T., Dabkowski, M., Monreal, J., Park, H., Valerdi, R. and Van Aken, E. — <em>Journal of Enterprise Transformation</em>, 3(4), 330–352</div>
+  <div class="pi"><span class="yr">2012</span><strong>Global Supply Network Health: Analysis and Visualization</strong>Basole, R.C. and M.A. Bellamy — <em>Information Knowledge Systems Management</em>, 11(1–2), 59–76</div>
 </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
-<span class="sl">Book Chapters</span>
-<div class="pbl">
-  <div class="pi"><span class="yr">2020</span><strong>Supply Network Drivers of Risk and Performance</strong><br/>Bellamy, M.A., and N. Osadchiy — <em>Oxford Handbook on Supply Chain Management</em>, T. Choi et al. (Eds.), Oxford University Press, New York</div>
-  <div class="pi"><span class="yr">2012</span><strong>Global Supply Network Health: Analysis and Visualization</strong><br/>Basole, R.C. and M.A. Bellamy — <em>Enterprise Transformation – Manufacturing in a Global Enterprise</em>, N. Bennett et al. (Eds.), IOS Press, Amsterdam</div>
+<section class="sec"><div class="wrapn">
+<h2 class="sl">Book Chapters</h2>
+<div class="pl">
+  <div class="pi"><span class="yr">2020</span><strong>Supply Network Drivers of Risk and Performance</strong>Bellamy, M.A., and N. Osadchiy — <em>Oxford Handbook on Supply Chain Management</em>, T. Choi et al. (Eds.), Oxford University Press, New York</div>
+  <div class="pi"><span class="yr">2012</span><strong>Global Supply Network Health: Analysis and Visualization</strong>Basole, R.C. and M.A. Bellamy — <em>Enterprise Transformation – Manufacturing in a Global Enterprise</em>, N. Bennett et al. (Eds.), IOS Press, Amsterdam</div>
 </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
-<span class="sl">Research Areas</span>
+<section class="sec"><div class="wrapn">
+<h2 class="sl">Research Areas</h2>
 <div class="g3">
-  <div class="cd"><div class="tg">Supply Networks</div><p style="font-size:var(--xs);color:var(--muted);margin-top:.5rem">Network structure, visibility, risk diffusion, alliance network anatomy and evolution across global supply chains.</p></div>
-  <div class="cd"><div class="tg">Sustainable Operations</div><p style="font-size:var(--xs);color:var(--muted);margin-top:.5rem">Environmental disclosure, administrative environmental innovations, CSR backsliding, and biodiversity consequences of industrial decisions.</p></div>
-  <div class="cd"><div class="tg">AI &amp; Platform Economics</div><p style="font-size:var(--xs);color:var(--muted);margin-top:.5rem">AI usage and disclosure in product development, sharing economy platforms, ride-sharing relocation biases, two-sided market design.</p></div>
+  <div class="cd"><h3>Supply Networks</h3><p style="font-size:var(--xs);color:var(--tm);margin-top:.5rem">Network structure, visibility, risk diffusion, alliance network anatomy and evolution across global supply chains.</p></div>
+  <div class="cd"><h3>Sustainable Operations</h3><p style="font-size:var(--xs);color:var(--tm);margin-top:.5rem">Environmental disclosure, administrative environmental innovations, CSR backsliding, and biodiversity consequences of industrial decisions.</p></div>
+  <div class="cd"><h3>AI &amp; Platform Economics</h3><p style="font-size:var(--xs);color:var(--tm);margin-top:.5rem">AI usage and disclosure in product development, sharing economy platforms, ride-sharing relocation biases, two-sided market design.</p></div>
 </div>
 </div></section>
 
-<footer>Marcus A. Bellamy · Boston University Questrom School of Business · bellamym@bu.edu</footer>
+</main>
+<footer>
+  <div class="wrapn fw">
+    <div class="fn">Marcus A. Bellamy &middot; Boston University Questrom School of Business &middot; bellamym@bu.edu</div>
+  </div>
+</footer>
+<script src="assets/js/theme.js"></script>
 </body>
 </html>

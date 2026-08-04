@@ -41,30 +41,62 @@ academic site updated a few times a year does not earn a node toolchain, and a b
 break the "open the file and look at it" loop that makes this pleasant to maintain.
 
 ```
-index.html      Home / landing
-cv.html         CV and biography
-research.html   Publications
-teaching.html   Teaching and courses
+index.html          Home / landing
+cv.html             CV and biography
+research.html       Publications
+teaching.html       Teaching and courses
+assets/css/style.css   The design system — single source of truth for all four pages
+assets/js/theme.js     Theme toggle, shared, persists via localStorage['mb-theme']
 README.md
 .gitignore
-CLAUDE.md       This file
+CLAUDE.md           This file
 ```
 
 ### The design system
 
-Each page carries its own inlined `<style>` block defining the same CSS custom properties:
+One stylesheet, `assets/css/style.css`, linked by all four pages. No page carries an inline
+`<style>` block. Edit tokens once, in one file.
 
 - **Typography**: Instrument Serif (display) + Inter (body), loaded from Google Fonts
 - **Color tokens**: `--bg --sur --sur2 --off --bd --dv --tx --tm --tf2 --ti --pr --ph --pl`
   Primary is teal (`--pr: #01696f` light, `#5badb4` dark)
-- **Theming**: `:root,[data-theme=light]` and `[data-theme=dark]`, toggled via `data-theme`
+- **Theming**: `:root,[data-theme=light]` and `[data-theme=dark]`, toggled via `data-theme`,
+  set on `<html>` by an inline blocking snippet in each page's `<head>` (no flash of the wrong
+  theme), then handled going forward by `assets/js/theme.js`
 - **Fluid type scale**: `--xs --sm --ba --lg --xl --2x`, all `clamp()`-based
-- **Radii / shadows / max width**: `--r1..--r4`, `--sh1 --sh2`, `--w: 1120px`
-- Class names are terse two-letter abbreviations (`.wrap .sh .nw .br .bi .tt .hg .ew .lead .acts .btn .bp`)
+- **Radii / shadows / max width**: `--r1..--r4`, `--sh1 --sh2`, `--w: 1120px` (home page's wide
+  grid), `--wn: 820px` (narrow reading measure — CV, Research, Teaching)
+- Class names are terse two-letter abbreviations (`.wrap .wrapn .sh .nw .br .bi .tt .hg .ew .lead
+  .acts .btn .bp .pl .pi .g3 .pgh .cvb .cvr`)
 
-**Known debt:** that style block is duplicated across all four pages, so the tokens drift the
-moment anyone edits one page. Extracting it to a shared `assets/css/style.css` is the single
-highest-value refactor available. Do it before adding pages, not after.
+### How it got this way
+
+Until 2026-08, this was two unrelated design systems, not one duplicated block: `index.html`
+alone (Instrument Serif, the token vocabulary above, a 1120px grid) and `cv.html` /
+`research.html` / `teaching.html` together (Crimson Pro, a `--text`/`--muted`/`--accent`
+vocabulary, an 820px column). The site read as two different websites. Diffing the four blocks
+before merging them turned up, on top of that split:
+
+- Six of System A's rulesets (`.pl .pi .g3 .pgh .cvb .cvr`) looked unused on `index.html` but
+  were in fact pre-written styles for the three other pages, never wired up.
+- Three same-named classes meant *different things* on the two systems — `.tgl` was a tag-list
+  container on one side and the theme-toggle button on the other; also `.tg`, `.pi`, `.cd`,
+  `.g3`, `.sl`, `.sec`, `.wrap`, `.pgh`, `.yr`, `.aw`.
+- `cv.html` had drifted from `research.html`/`teaching.html` on five spacing values (it was
+  edited later, `81d6c61`, and the change never propagated).
+- Four color tokens failed WCAG AA contrast, as low as 2.05:1 (small text: footer, year labels,
+  metadata).
+- Only `index.html` persisted the theme choice — navigating from a dark-toggled inner page back
+  to Home reset it to light.
+
+The fix was a full unify onto System A's vocabulary, with class renames at every collision point
+(`.tgl` theme-toggle → `.tt`, `.tag`/`.tags` → `.tg`/`.tgl`, `.pub`/`.pn` → `.pi`/`.pi .yr`,
+`.row`/`.ri` → `.cvr`, `.sub` → `.pgh p`, `.dl-btn` → `.btn .bg2`, `.active` → `.nav-on`, the
+System B `nav`/`.nav-name`/`.nav-links` → `.sh`/`.nw`/`.br`+`.bi`/`nav ul`), one shared
+`theme.js`, the `--tf2` light value corrected for contrast (`#9b9790` → `#6e6a64`), and a new
+`.wrapn`/`--wn` for the narrower document pages. `.pub`/`.pn`'s numbered-paragraph format on
+`cv.html` was also reformatted onto the same `.pi`/`.yr` card layout `research.html` already
+used, so publications look the same on both pages now.
 
 ---
 
