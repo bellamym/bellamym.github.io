@@ -113,7 +113,7 @@ footer{padding:2.2rem 0 3.2rem;border-top:1px solid var(--dv)}
 <header class="sh">
   <div class="wrap nw">
     <a class="br" href="index.html">
-      <span class="bi"><img src="assets/headshot_silver.jpg" alt="" width="42" height="42"/></span>
+      <span class="bi"><img src="assets/headshot.jpg" alt="" width="42" height="42"/></span>
       <span>Marcus A. Bellamy</span>
     </a>
     <nav aria-label="Primary"><ul>
@@ -140,14 +140,12 @@ footer{padding:2.2rem 0 3.2rem;border-top:1px solid var(--dv)}
       </div>
       <aside class="pw">
         <div class="pf">
-          <img id="hs" src="assets/headshot_silver.jpg" alt="Marcus A. Bellamy" width="310" height="413" loading="eager"/>
+          <img id="hs" src="assets/headshot.jpg" alt="Marcus A. Bellamy" width="310" height="413" loading="eager"/>
         </div>
         <div class="pbdg">Associate Professor &middot; BU Questrom</div>
         <div class="psw">
-          <button class="on" onclick="sp('assets/headshot_silver.jpg',this)">Silver</button>
-          <button onclick="sp('assets/headshot_bw.jpg',this)">B&amp;W</button>
-          <button onclick="sp('assets/headshot_sepia.jpg',this)">Warm</button>
-          <button onclick="sp('assets/headshot_color.jpg',this)">Color</button>
+          <button class="on" onclick="sp('assets/headshot.jpg',this,'Marcus A. Bellamy')">Studio</button>
+          <button onclick="sp('assets/headshot-alt.jpg',this,'Marcus A. Bellamy in his office')">Office</button>
         </div>
       </aside>
     </div>
@@ -203,7 +201,7 @@ footer{padding:2.2rem 0 3.2rem;border-top:1px solid var(--dv)}
     <div class="fn">Last updated April 2026</div>
   </div>
 </footer>
-<script>function sp(s,b){document.getElementById('hs').src=s;document.querySelectorAll('.psw button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');}</script>
+<script>function sp(s,b,a){var i=document.getElementById('hs');i.src=s;if(a)i.alt=a;document.querySelectorAll('.psw button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');}</script>
 <script>
 (function(){
   var b=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
